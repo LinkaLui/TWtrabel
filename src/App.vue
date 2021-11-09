@@ -1,21 +1,26 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+
+import { computed } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
+
+const isMobile = document.body.clientWidth <= 640 ? true : false
+const router = useRouter()
+const path = computed(()=>{
+  return router.currentRoute.value.path.replace('/','')
+})
+
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <div class="w-auto mx-auto max-w-screen-xl font-moto" :class="{'max-w-screen-sm': isMobile}">
+    <app-header :path="path" :is-mobile="isMobile"></app-header>
+    <router-view></router-view>
+    <app-footer :path="path" :is-mobile="isMobile"></app-footer>
+  </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
