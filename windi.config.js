@@ -15,8 +15,8 @@ export default {
       backgroundColor: {
         home: '#6E9292',
         home_light: '#A7D4DA',
-        attractions: '#6E9292',
-        attractions_light: '#A7D4DA',
+        attraction: '#6E9292',
+        attraction_light: '#A7D4DA',
         hotel: '#C2BB96',
         hotel_light: '#E6DDB2',
         food: '#738677',

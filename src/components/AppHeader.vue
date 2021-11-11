@@ -1,12 +1,16 @@
 <script setup>
-const props = defineProps({
-  isMobile: Boolean,
-  path: String
+import { computed, reactive } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore()
+const device = reactive({
+    path: computed(() => { return store.state.path }),
+    isMobile: computed(() => { return store.state.isMobile })
 })
 
 const options =[
   { text: '活動新訊', link: '' },
-  { text: '景點', link: 'attractions' },
+  { text: '景點', link: 'attraction' },
   { text: '美食', link: 'food' },
   { text: '住宿', link: 'hotel' },
   { text: '交通', link: 'travel' }
@@ -28,12 +32,12 @@ const options =[
     <img 
       class="absolute left-1/2 transform -translate-x-1/2 z-1" 
       :class="[
-        {'top-4/100 w-[calc(12%)]' : !props.isMobile && props.path},
-        {'top-6/100 w-[calc(22%)]' : !props.isMobile && !props.path},
-        {'top-8/100 w-[calc(24%)]' : props.isMobile}
+        {'top-4/100 w-[calc(12%)]' : !device.isMobile && device.path},
+        {'top-6/100 w-[calc(22%)]' : !device.isMobile && !device.path},
+        {'top-8/100 w-[calc(24%)]' : device.isMobile}
       ]"
-      :src="`/src/assets/logo${(props.isMobile || props.path) ? '-small' : ''}.png`"
+      :src="`/src/assets/logo${(device.isMobile || device.path) ? '-small' : ''}.png`"
     >
-    <img class="w-full" :src="`/src/assets/background-${props.path !== '' ? props.path : 'home'}${props.isMobile ? '-m' : ''}.png`">
+    <img class="w-full" :src="`/src/assets/background-${device.path !== '' ? device.path : 'home'}${device.isMobile ? '-m' : ''}.png`">
   </div>
 </template>
