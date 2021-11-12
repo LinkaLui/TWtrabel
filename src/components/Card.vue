@@ -55,8 +55,8 @@ const props = defineProps({
       <img
         class="inline-block bg-white_text object-cover object-center" 
         :class="[
-          {'h-md' : !device.isMobile},
-          {'h-72' : device.isMobile}
+          {'w-96 h-md' : !device.isMobile},
+          {'w-64 h-72' : device.isMobile}
         ]"
         :src="item.Picture.PictureUrl1"
         :alt="item.Picture.PictureDescription1"
