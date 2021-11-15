@@ -9,6 +9,7 @@ const device = reactive({
 
 const props = defineProps({
   list: Array,
+  HasDetail: Boolean,
 })
 
 </script>
