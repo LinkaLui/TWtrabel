@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper.5a098b48.js";import{o,c as r}from"./vendor.968a8615.js";const t={};function c(l,n){return o(),r("div",null,"helloWord!weclome to Vue3.0.Asiter")}var _=e(t,[["render",c]]);export{_ as default};
